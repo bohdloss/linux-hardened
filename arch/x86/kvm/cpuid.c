@@ -2168,7 +2168,8 @@ int kvm_emulate_cpuid(struct kvm_vcpu *vcpu)
 
 	eax = kvm_eax_read(vcpu);
 	ecx = kvm_ecx_read(vcpu);
-	kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
+	cpuid_count(eax, ecx, &eax, &ebx, &ecx, &edx);
+	//kvm_cpuid(vcpu, &eax, &ebx, &ecx, &edx, false);
 	kvm_eax_write(vcpu, eax);
 	kvm_ebx_write(vcpu, ebx);
 	kvm_ecx_write(vcpu, ecx);
